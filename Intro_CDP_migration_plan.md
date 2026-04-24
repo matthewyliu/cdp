@@ -115,6 +115,213 @@ style: |
   section.split-context .split-bottom {
     margin-top: 0.35em;
   }
+  /* As-is hybrid slide: compact text + diagram anchored at bottom */
+  section.asis-hybrid {
+    font-size: 18px;
+    line-height: 1.28;
+  }
+  section.asis-hybrid h2 {
+    margin-bottom: 0.2em;
+    padding-bottom: 3px;
+  }
+  section.asis-hybrid > p {
+    margin: 0.12em 0 0.18em 0;
+  }
+  section.asis-hybrid ul {
+    margin: 0.08em 0 0.12em 0;
+    padding-left: 1.05em;
+  }
+  section.asis-hybrid li {
+    margin-bottom: 0.05em;
+  }
+  section.asis-hybrid .asis-impl {
+    font-size: 16px;
+    margin: 0.12em 0 0.2em 0;
+    color: #374151;
+  }
+  section.asis-hybrid .asis-diagram-wrap {
+    margin-top: 0.2em;
+    padding-top: 0.15em;
+    border-top: 1px solid #e5e7eb;
+  }
+  section.asis-hybrid .asis-diagram-wrap img {
+    display: block;
+    margin: 0 auto;
+    max-height: 248px;
+    max-width: 100%;
+    width: auto;
+    object-fit: contain;
+  }
+  section.asis-hybrid .asis-diagram-caption {
+    font-size: 11px;
+    line-height: 1.25;
+    color: #6b7280;
+    margin: 0.2em 0 0 0;
+    text-align: center;
+  }
+  /* Pre-study slide: diagram (left) + effort (right), vertically centered on slide */
+  section.prestudy-slide {
+    font-size: 19px;
+    line-height: 1.28;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+  section.prestudy-slide h2 {
+    margin-bottom: 0.2em;
+    padding-bottom: 3px;
+    margin-top: 0;
+  }
+  section.prestudy-slide > p:first-of-type {
+    font-size: 16px;
+    color: #4b5563;
+    margin: 0 0 0.45em 0;
+  }
+  section.prestudy-slide .prestudy-row {
+    display: grid;
+    grid-template-columns: 7fr 3fr;
+    gap: 0.85rem;
+    align-items: center;
+    margin-top: 0;
+  }
+  section.prestudy-slide .prestudy-left img {
+    display: block;
+    margin: 0 auto;
+    max-height: 340px;
+    max-width: 100%;
+    object-fit: contain;
+  }
+  section.prestudy-slide .prestudy-right {
+    font-size: 15px;
+    line-height: 1.32;
+    padding-top: 0.1em;
+  }
+  section.prestudy-slide .prestudy-est {
+    font-size: 15px;
+    margin: 0;
+  }
+  section.prestudy-slide .prestudy-est ul {
+    margin: 0.15em 0 0 0;
+    padding-left: 1.05em;
+  }
+  section.prestudy-slide .prestudy-est li {
+    margin-bottom: 0.1em;
+  }
+  /* Due diligence slide: scenario-based Alibaba target diagram */
+  section.diligence-slide {
+    font-size: 18px;
+    line-height: 1.25;
+  }
+  section.diligence-slide h2 {
+    margin-bottom: 0.15em;
+    padding-bottom: 3px;
+  }
+  section.diligence-slide > p:first-of-type {
+    font-size: 15px;
+    color: #4b5563;
+    margin: 0 0 0.3em 0;
+  }
+  section.diligence-slide img {
+    display: block;
+    margin: 0 auto;
+    max-height: 430px;
+    max-width: 100%;
+    object-fit: contain;
+  }
+  /* Overall architecture proposal slide (Ali + Azure diagram) */
+  section.overall-arch-slide {
+    font-size: 18px;
+    line-height: 1.25;
+  }
+  section.overall-arch-slide h2 {
+    margin-bottom: 0.12em;
+    padding-bottom: 3px;
+  }
+  section.overall-arch-slide > p:first-of-type {
+    font-size: 15px;
+    color: #4b5563;
+    margin: 0 0 0.25em 0;
+  }
+  section.overall-arch-slide img {
+    display: block;
+    margin: 0 auto;
+    max-height: 410px;
+    max-width: 100%;
+    object-fit: contain;
+  }
+  /* Domains A&B / C&D slides — aligned tables, spacing, footer clearance */
+  section.domains-slide {
+    font-size: 20px;
+    line-height: 1.28;
+  }
+  section.domains-slide h2 {
+    margin-bottom: 0.3em;
+    padding-bottom: 3px;
+  }
+  section.domains-slide .domains-section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1f4e79;
+    margin: 0.4em 0 0.15em 0;
+  }
+  section.domains-slide .domains-section-title:first-of-type {
+    margin-top: 0.1em;
+  }
+  section.domains-slide table {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 0.45em auto;
+    font-size: 17px;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+  section.domains-slide table th:first-child,
+  section.domains-slide table td:first-child {
+    width: 44%;
+  }
+  section.domains-slide th,
+  section.domains-slide td {
+    border: 1px solid #d1d5db;
+    padding: 0.3em 0.55em;
+    text-align: left;
+    vertical-align: top;
+    word-wrap: break-word;
+  }
+  section.domains-slide th {
+    background: #eef2f7;
+    color: #1f4e79;
+    font-weight: 600;
+  }
+  section.domains-slide tbody tr:nth-child(even) {
+    background: #fafafa;
+  }
+  section.domains-slide .domains-after-tables {
+    font-size: 16px;
+    line-height: 1.32;
+    color: #374151;
+    margin: 0.2em auto 0 auto;
+    max-width: 900px;
+  }
+  section.domains-slide .domains-list {
+    margin: 0.15em auto 0.35em auto;
+    padding-left: 1.15em;
+    max-width: 900px;
+    font-size: 17px;
+  }
+  section.domains-slide .domains-list li {
+    margin-bottom: 0.12em;
+  }
+  section.domains-slide .domains-callout {
+    font-size: 16px;
+    line-height: 1.32;
+    margin: 0.35em auto 0 auto;
+    max-width: 900px;
+    padding: 0.4em 0.55em;
+    background: #f3f4f6;
+    border-left: 4px solid #2e75b6;
+    color: #1f2937;
+  }
 ---
 
 <!-- _class: lead -->
@@ -151,7 +358,7 @@ Michelin B2C is moving to a **Consumer Lifetime Value** model. Michelin China ne
 
 <!-- _class: split-context -->
 
-## 2. High-Level System Context Diagram
+## High-Level System Context Diagram
 
 <div class="split-row">
 <div class="split-left">
@@ -175,14 +382,11 @@ Michelin B2C is moving to a **Consumer Lifetime Value** model. Michelin China ne
 </div>
 </div>
 
-<div class="split-bottom">
-<p class="split-caption"><strong>Diagram (target context):</strong> <strong>CDP</strong> at the center — engagement channels (landing pages, SMS/MMS, WeChat OA, MiniProgram), <strong>business users</strong> (management) and <strong>DevOps</strong> (administration), <strong>Azure AD</strong> (auth), and <strong>CI/CD</strong>. <strong>DataLake</strong>: real-time events (e.g. Event Hubs) and batch/storage via the <strong>data lake storage account</strong>. Sources ingest through <strong>Data Factory IR</strong> from <strong>IaaS</strong> (SNX CRM, CRM DP, OMS) and <strong>PaaS</strong> (SNX, SNXJW).</p>
-<p class="split-note"><strong>Important:</strong> target logical context only — the as-is estate is more nuanced; see the next slide before making infra assumptions.</p>
-</div>
-
 ---
 
-## 3. As-Is Reality — Hybrid Chain, Not a Clean Pipeline
+<!-- _class: asis-hybrid -->
+
+## As-Is Reality — Hybrid Chain
 
 The real estate today is a **hybrid lake + warehouse + app-serving chain** with multiple delivery paths.
 
@@ -191,27 +395,51 @@ The real estate today is a **hybrid lake + warehouse + app-serving chain** with 
 - **Parallel reporting chain** exists alongside the lake: **9RR Data Warehouse · SSIS · Talend · H5 Tomcat · Power BI**.
 - **Six runtime patterns** observed in operations (from monitoring), ranging from `Source → Kafka → 9DL → Power BI` to `Source → ADF/Databricks → 9DL → 9RR → Talend → H5 → Power BI`.
 
-**Why this matters for infra migration**
-Scope is not just "lift 9DL". It includes untangling **9DL ↔ 9CD ↔ 9RR / reporting** interactions and the operational patterns that have accreted around them.
+<p class="asis-impl"><strong>Infra implication:</strong> scope spans <strong>9DL ↔ 9CD ↔ 9RR / reporting</strong> — not a single lift of the lake.</p>
+
+<div class="asis-diagram-wrap">
+<img src="design/diagram_asis_hybrid_chain.png" alt="As-is monitoring view: Source, Datalake and warehouse, Reports, and numbered scenarios" />
+<p class="asis-diagram-caption">As-is (monitoring): Source → Datalake &amp; warehouse (ADF, Kafka, storage, SSIS/SQL) → Reports (Talend, H5, PBI) — numbered scenarios on the right.</p>
+</div>
 
 ---
 
-## 4. Main Components — Combined Logical View
+<!-- _class: prestudy-slide -->
 
-![center w:1000](design/diagram_2_combined_logical_view.png)
+## Migration Pre-study from Michael Zhao
 
-**Key infra building blocks to plan for**
-- **Azure-native (9DL):** Blob, Event Hub, ADF, ADLS Gen2, Databricks, Self-hosted IR, Key Vault, Azure AD
-- **Kubernetes / CaaS (9CD):** microservices fronted by Application Gateway
-- **Data middleware:** Kafka · Redis · MySQL · MongoDB · ElasticSearch
-- **Big-data engine inside 9CD:** CDH (Spark / HDFS / HBase / Kudu) — non-trivial footprint, uses 9DL ADLS as secondary storage
-- **Adjacent reporting stack:** 9RR DW · SSIS · Talend · H5 Tomcat · Power BI
-- **Identity & secrets:** Azure AD · Key Vault
-- **CI/CD context:** Jenkins · GitLab · Artifactory
+
+<div class="prestudy-row">
+<div class="prestudy-left">
+<img src="design/migration_prestudy_architecture_michael_zhao.png" alt="Target architecture study: AS-IS CDH vs TO-BE Alibaba stack by layer" />
+</div>
+<div class="prestudy-right">
+<div class="prestudy-est">
+<strong>Rough effort (order-of-magnitude):</strong>
+<ul>
+<li><strong>DEV — Microservices</strong> (6 services): ~<strong>50</strong> dev MD</li>
+<li><strong>DEV — ETL</strong> (all ETL adjustment): ~<strong>55</strong> dev MD</li>
+<li><strong>E2E test</strong> (CI/CD): ~<strong>20</strong> tester MD + ~<strong>10</strong> dev MD</li>
+<li><strong>Deployment</strong> (data migration): ~<strong>5</strong> dev MD</li>
+<li><strong>Totals:</strong> ~<strong>20</strong> tester MD · ~<strong>120</strong> dev MD</li>
+</ul>
+</div>
+</div>
+</div>
 
 ---
 
-## 5. Target Architecture — Guiding Principles
+<!-- _class: diligence-slide -->
+
+## Proposed Due Diligence Study
+
+*Scenario-based target view on Alibaba Cloud — separate scenarios instead of forcing one engine stack to do every job.*
+
+![center w:1000](design/diagram_scenario_based_target_alibaba.png)
+
+---
+
+## Guiding Principles of Max Yang (based on above CDH plan)
 
 **Bottom line:** *not* "move everything from Azure to Ali."
 
@@ -228,7 +456,17 @@ Scope is not just "lift 9DL". It includes untangling **9DL ↔ 9CD ↔ 9RR / rep
 
 ---
 
-## 6. Change Map — Four Domains at a Glance
+<!-- _class: overall-arch-slide -->
+
+## Overall Architecture
+
+*CDP overall architecture proposal — AliCloud (CDP MA, DataHub, lean Ali data port) + Azure (main lakehouse / BI); legend: green = new, yellow = to-change, white = no-change.*
+
+![center w:1050](design/diagram_cdp_overall_architecture_proposal.png)
+
+---
+
+## Change Map — Four Domains at a Glance
 
 | # | Domain | Summary of change |
 |---|--------|-------------------|
@@ -242,82 +480,62 @@ If data is **sourced from Ali** and **only used by CDP**, it is processed **on A
 
 ---
 
-## 7. Domains A & B — Ali-Side CDP Changes
+<!-- _class: domains-slide -->
 
-**A) Runtime middleware → Ali managed services**
+## Domains A & B — Ali-Side CDP Changes
 
-| Current | Target |
-|---------|--------|
+<p class="domains-section-title">A) Runtime middleware → Alibaba managed services</p>
+
+| Current | Target (Alibaba) |
+|---------|------------------|
 | MongoDB VM | Aliyun MongoDB |
 | ElasticSearch VM | Shared ES |
 | Kafka VM | Serverless Kafka |
 | Azure Storage Account | OSS |
 | — | PE custom pipeline adjustment |
 
-**B) CDP data processing → Ali-native path**
+<p class="domains-section-title">B) CDP data processing → Alibaba-native path</p>
 
-| Current (Azure) | Target (Ali) |
-|-----------------|--------------|
+| Current (Azure) | Target (Alibaba) |
+|-----------------|------------------|
 | Databricks | EMR Serverless Spark |
 | Storage Account | OSS / OSS-HDFS |
 | Data Factory | DataWorks |
-| — | **New additions:** Flink + Fluss · Hive Metastore · Hologres |
+| — | **New:** Flink + Fluss · Hive Metastore · Hologres |
 
-Plus **cross-cloud orchestration & integration** between Azure and Ali for the workloads that remain Azure-centered.
-
----
-
-## 8. Domains C & D — Azure Modernization + CDH Disposition
-
-**C) Azure 9DL is modernized in parallel — not frozen**
-- Enable **Unity Catalog**
-- Complete **N3 migration**
-- Adopt **Iceberg** as the standard table format
-- Direct integration with **CDL**
-- Decommission SQL Server → use **ADB SQL Warehouse** as report DB
-- Move toward **Power BI semantic models** and governed datasets
-
-**D) CDH — explicit non-replacement in this phase**
-- **Keep CDH** under a security **waiver / transitional stance**
-- Avoid destabilizing the enterprise center just to chase CDH replacement now
-- A scenario-based future mapping exists (next slide) — **reference, not this phase's scope**
-
-**Reporting back-flow**
-If BI needs CDP-computed data, **daily sync Ali → Azure**. **Gold / Serving layer only.** Copy-as-delivery.
+<p class="domains-after-tables">Plus <strong>cross-cloud orchestration &amp; integration</strong> between Azure and Alibaba for workloads that stay Azure-centered.</p>
 
 ---
 
-## 9. Forward Reference — Scenario-Based Alibaba Workload Mapping
+<!-- _class: domains-slide -->
 
-For the *eventual* CDH modernization (not this phase), the target is **scenario-based**, not one-stack-fits-all.
+## Domains C & D — Azure Modernization + CDH Disposition
 
-| Workload scenario | Target options |
-|-------------------|----------------|
-| Batch warehouse / governed ETL | **MaxCompute** (modernization-first) · **EMR on ECS** (compatibility-first) |
-| Interactive SQL on lake / open formats | EMR **Trino** / EMR Hive / Spark SQL (+ DLF + OSS/OSS-HDFS) |
-| Hot mutable analytics / BI serving | **StarRocks** (Serverless) · **Hologres** |
-| Operational wide / sparse lookup | **ApsaraDB for HBase** |
-| Cross-cutting governance & orchestration | **DataWorks** (control plane, not compute) |
+<p class="domains-section-title">C) Azure 9DL — modernize in parallel (not frozen)</p>
 
-**Key framing for Infra**
-- **No single CDH substitute** — map by workload scenario.
-- **EMR on ECS** = the most CDH-like landing zone (HDFS / YARN / Hive / Spark / HBase / ZooKeeper) when migration risk must be minimized.
-- **DataWorks** is a **governance & orchestration plane**, not a compute engine.
-- Kudu / Impala need **scenario-based redesign**, not 1:1 substitution.
+<ul class="domains-list">
+<li>Enable <strong>Unity Catalog</strong></li>
+<li>Complete <strong>N3 migration</strong></li>
+<li>Adopt <strong>Iceberg</strong> as the standard table format</li>
+<li>Direct integration with <strong>CDL</strong></li>
+<li>Decommission SQL Server → use <strong>ADB SQL Warehouse</strong> as report DB</li>
+<li>Move toward <strong>Power BI semantic models</strong> and governed datasets</li>
+</ul>
+
+<p class="domains-section-title">D) CDH — no replacement in this phase</p>
+
+<ul class="domains-list">
+<li><strong>Keep CDH</strong> under a security <strong>waiver / transitional stance</strong></li>
+<li>Avoid destabilizing the enterprise center to chase CDH replacement now</li>
+<li>Scenario-based future mapping — see <strong>Proposed Due Diligence Study</strong> slide (<strong>reference only</strong> for this phase)</li>
+</ul>
+
+<p class="domains-callout"><strong>Reporting back-flow:</strong> If BI needs CDP-computed data, <strong>daily sync Alibaba → Azure</strong>. <strong>Gold / Serving layer only.</strong> Copy-as-delivery.</p>
 
 ---
 
 ## Next Steps & Open Floor
 
-**Coming in follow-up sessions**
-- As-Is vs To-Be infra inventory (component by component)
-- Mapping of the **six runtime patterns** and the **9RR / SSIS / Talend / H5 / Power BI** chain
-- 9DL ↔ 9CD integration contracts (service principal, ADLS access, Kafka, etc.)
-- Ali-side managed-service sizing (MongoDB · Shared ES · Serverless Kafka · OSS · EMR · DataWorks)
-- Cross-cloud orchestration & Gold-layer back-sync design
-- Network & security topology, China compliance considerations
-- Migration phases, dependencies, and cutover approach
-- Capacity, sizing, SLOs, and observability requirements
-
 **Now — your turn**
+
 Questions, concerns, and early flags welcome. Anything that already looks risky or ambiguous from an infra standpoint, please raise it so we can factor it into the migration plan.
