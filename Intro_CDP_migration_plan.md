@@ -95,8 +95,8 @@ style: |
     justify-content: center;
   }
   section.split-context .split-right img {
-    width: 100%;
-    max-height: 400px;
+    width: 120%;
+    max-height: 440px;
     object-fit: contain;
     margin: 0;
   }
@@ -114,6 +114,52 @@ style: |
   }
   section.split-context .split-bottom {
     margin-top: 0.35em;
+  }
+  /* 9DL on Azure: bullets (left) + reference architecture diagram (right) */
+  section.arch-9dl h2 {
+    margin-bottom: 0.2em;
+  }
+  section.arch-9dl .arch-9dl-lead {
+    font-size: 16px;
+    line-height: 1.3;
+    color: #4b5563;
+    margin: 0 0 0.35em 0;
+  }
+  section.arch-9dl .arch-9dl-row {
+    display: grid;
+    grid-template-columns: 32% 66%;
+    gap: 0.9rem;
+    align-items: start;
+    margin-top: 0.1em;
+  }
+  section.arch-9dl .arch-9dl-left {
+    font-size: 15px;
+    line-height: 1.32;
+    color: #1f2937;
+  }
+  section.arch-9dl .arch-9dl-left ul {
+    margin: 0.12em 0 0 0;
+    padding-left: 1.05em;
+  }
+  section.arch-9dl .arch-9dl-left li {
+    margin-bottom: 0.1em;
+  }
+  section.arch-9dl .arch-9dl-right {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  section.arch-9dl .arch-9dl-right img {
+    width: 100%;
+    max-height: 420px;
+    object-fit: contain;
+    margin: 0;
+  }
+  section.arch-9dl .arch-9dl-caption {
+    font-size: 12px;
+    line-height: 1.3;
+    color: #6b7280;
+    margin: 0.35em 0 0 0;
   }
   /* As-is hybrid slide: compact text + diagram anchored at bottom */
   section.asis-hybrid {
@@ -208,47 +254,72 @@ style: |
   section.prestudy-slide .prestudy-est li {
     margin-bottom: 0.1em;
   }
-  /* Due diligence slide: scenario-based Alibaba target diagram */
-  section.diligence-slide {
-    font-size: 18px;
+  /* Large diagram under h2 + lead line; h2 uses same base as other slides (global section 24px). */
+  section.diagram-slide {
     line-height: 1.25;
   }
-  section.diligence-slide h2 {
+  section.diagram-slide h2 {
     margin-bottom: 0.15em;
     padding-bottom: 3px;
   }
-  section.diligence-slide > p:first-of-type {
+  section.diagram-slide > p:first-of-type {
     font-size: 15px;
     color: #4b5563;
     margin: 0 0 0.3em 0;
   }
-  section.diligence-slide img {
+  section.diagram-slide img {
     display: block;
     margin: 0 auto;
     max-height: 430px;
     max-width: 100%;
     object-fit: contain;
   }
-  /* Overall architecture proposal slide (Ali + Azure diagram) */
-  section.overall-arch-slide {
-    font-size: 18px;
-    line-height: 1.25;
-  }
-  section.overall-arch-slide h2 {
-    margin-bottom: 0.12em;
+  /* 9CD / CDH component table (compact four columns) */
+  section.cdh-slide h2 {
+    margin-bottom: 0.2em;
     padding-bottom: 3px;
   }
-  section.overall-arch-slide > p:first-of-type {
-    font-size: 15px;
+  section.cdh-slide .cdh-lead {
+    font-size: 16px;
+    line-height: 1.32;
     color: #4b5563;
-    margin: 0 0 0.25em 0;
+    margin: 0 0 0.35em 0;
   }
-  section.overall-arch-slide img {
-    display: block;
-    margin: 0 auto;
-    max-height: 410px;
-    max-width: 100%;
-    object-fit: contain;
+  section.cdh-slide table {
+    width: 100%;
+    margin: 0.15em 0 0 0;
+    font-size: 14px;
+    line-height: 1.28;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+  section.cdh-slide th,
+  section.cdh-slide td {
+    border: 1px solid #d1d5db;
+    padding: 0.28em 0.45em;
+    text-align: left;
+    vertical-align: top;
+    word-wrap: break-word;
+  }
+  section.cdh-slide th {
+    background: #eef2f7;
+    color: #1f4e79;
+    font-weight: 600;
+  }
+  section.cdh-slide th:nth-child(1),
+  section.cdh-slide td:nth-child(1) {
+    width: 10%;
+  }
+  section.cdh-slide th:nth-child(2),
+  section.cdh-slide td:nth-child(2) {
+    width: 16%;
+  }
+  section.cdh-slide th:nth-child(3),
+  section.cdh-slide td:nth-child(3) {
+    width: 24%;
+  }
+  section.cdh-slide tbody tr:nth-child(even) {
+    background: #fafafa;
   }
   /* Domains A&B / C&D slides — aligned tables, spacing, footer clearance */
   section.domains-slide {
@@ -384,22 +455,78 @@ Michelin B2C is moving to a **Consumer Lifetime Value** model. Michelin China ne
 
 ---
 
+<!-- _class: diagram-slide -->
+
+## Overall Architecture — End-to-End Flow
+- **Sources** → **lakehouse** on storage (Pre-ODS / ODS / DW / DM with Databricks + Delta) → **data services** (MySQL, Redis, Cloudera, Elastic, Cosmos DB, Kafka) → **CDP** → **MAP** → **touchpoints**
+- Behavior data closes the loop back to CDP. 
+
+![center w:1050](design/diagram_overall_architecture_layers.png)
+
+---
+
+<!-- _class: cdh-slide -->
+
+## 9CD / CDH — Key platform components
+
+<p class="cdh-lead">The <strong>9CD</strong> activation layer sits on a <strong>Cloudera Hadoop (CDH)</strong> cluster for large-scale storage and processing; these are the CDH-related building blocks from the component inventory (CDH and <code>CDH/…</code> services).</p>
+
+| Component Code | Component | Component details | Description |
+| ---------------- | --------- | ----------------- | ----------- |
+| C20 | CDH | Cloudera Hadoop platform |  |
+| C21 | CDH/Impala | Interactive query engine | Apache Impala is the open source, native analytic database for Apache Hadoop. |
+| C22 | CDH/kudu | Distributed data store engine | Apache Kudu is an open source distributed data storage engine that makes fast analytics on fast and changing data easy. |
+| C23 | CDH/spark | Big data processing engine | A fast and general compute engine for Hadoop data. Spark provides a simple and expressive programming model that supports a wide range of applications, including ETL, machine learning, stream processing, and graph computation. |
+| C24 | CDH/hdfs | Distributed file system | A distributed file system that provides high-throughput access to application data. |
+| C25 | CDH/hbase | Distributed data store | A scalable, distributed database that supports structured data storage for large tables. |
+| C26 | CDH/YARN | Resource Management | A framework for job scheduling and cluster resource management. |
+| C27 | CDH/Hive | Hadoop data store engine | A data warehouse infrastructure that provides data summarization and ad hoc querying. |
+| C28 | CDH/Zookeeper | coordination service | A high-performance coordination service for distributed applications. |
+| C29 | CDH/ClouderaManager | Hadoop management tool | Cloudera Manager is the industry's trusted tool for managing Hadoop in production. |
+
+---
+
+<!-- _class: arch-9dl -->
+
+## 9DL — Data Lake Architecture (Azure China)
+<br>
+<p class="arch-9dl-lead">How the consumer <strong>9DL</strong> platform is put together: ingestion → lakehouse storage on <strong>ADLS Gen2</strong> (Delta) → serving.</p>
+<br>
+
+<div class="arch-9dl-row">
+<div class="arch-9dl-left">
+<ul>
+<li><strong>Ingestion:</strong> batch via external receiver (Blob) and <strong>streaming</strong> via Event Hubs</li>
+<li><strong>Orchestration &amp; compute:</strong> <strong>Data Factory</strong> (scheduler) and <strong>Databricks</strong> for transforms</li>
+<li><strong>Storage (Gen2):</strong> <strong>Raw</strong> landing → <strong>ODS</strong> → <strong>datastore</strong> → <strong>Data mart</strong> — modeled as <strong>Delta Lake</strong> tables on ADLS</li>
+<li><strong>Platform:</strong> <strong>Key Vault</strong> for secrets/encryption; <strong>CI/CD</strong> for release management</li>
+<li><strong>Serving:</strong> <strong>CDP</strong>, <strong>CRM</strong>, SQL reporting (<strong>ChinaBI</strong>), <strong>Power BI</strong></li>
+</ul>
+</div>
+<div class="arch-9dl-right">
+<img src="design/diagram_9dl_azure_architecture.png" alt="9DL on Azure China: source to ADLS Gen2 zones and serving" />
+</div>
+</div>
+
+---
+
 <!-- _class: asis-hybrid -->
 
 ## As-Is Reality — Hybrid Chain
+<br>
+The real estate today is a hybrid **lake + warehouse + app-serving chain** with multiple delivery paths.
 
-The real estate today is a **hybrid lake + warehouse + app-serving chain** with multiple delivery paths.
-
-- **9DL ↔ 9CD is bidirectional.** 9CD is both a source and a consumer of the lake; 9CD/CDH reads 9DL ADLS via service principal (ADLS = secondary storage for CDH).
+- **9DL ↔ 9CD is bidirectional.**  9DL/ADLS = secondary storage for 9CD/CDH.
 - **9CD has its own data gravity.** Substantial processing happens inside 9CD — Kafka, CDH (Spark / HDFS / HBase / Kudu), MySQL, MongoDB, Redis, ElasticSearch — not always lake-first.
 - **Parallel reporting chain** exists alongside the lake: **9RR Data Warehouse · SSIS · Talend · H5 Tomcat · Power BI**.
-- **Six runtime patterns** observed in operations (from monitoring), ranging from `Source → Kafka → 9DL → Power BI` to `Source → ADF/Databricks → 9DL → 9RR → Talend → H5 → Power BI`.
+- **Six runtime patterns** observed in operations, ranging from 
+  - `Source → Kafka → 9DL → Power BI` to 
+  - `Source → ADF/Databricks → 9DL → 9RR → Talend → H5 → Power BI`.
 
-<p class="asis-impl"><strong>Infra implication:</strong> scope spans <strong>9DL ↔ 9CD ↔ 9RR / reporting</strong> — not a single lift of the lake.</p>
-
+<br>
+<br>
 <div class="asis-diagram-wrap">
 <img src="design/diagram_asis_hybrid_chain.png" alt="As-is monitoring view: Source, Datalake and warehouse, Reports, and numbered scenarios" />
-<p class="asis-diagram-caption">As-is (monitoring): Source → Datalake &amp; warehouse (ADF, Kafka, storage, SSIS/SQL) → Reports (Talend, H5, PBI) — numbered scenarios on the right.</p>
 </div>
 
 ---
@@ -429,7 +556,7 @@ The real estate today is a **hybrid lake + warehouse + app-serving chain** with 
 
 ---
 
-<!-- _class: diligence-slide -->
+<!-- _class: diagram-slide -->
 
 ## Proposed Due Diligence Study
 
@@ -456,7 +583,7 @@ The real estate today is a **hybrid lake + warehouse + app-serving chain** with 
 
 ---
 
-<!-- _class: overall-arch-slide -->
+<!-- _class: diagram-slide -->
 
 ## Overall Architecture
 
